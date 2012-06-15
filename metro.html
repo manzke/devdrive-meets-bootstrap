@@ -480,6 +480,28 @@
 					metroDarkUrl: 'img/metroIcons.jpg'
 				}); 
 				$('.password-container').pschecker({ onPasswordValidate: validatePassword, onPasswordMatch: matchPassword });
+				
+				var submitbutton = $('.submit-button');
+				var errorBox = $('.error');
+				errorBox.css('visibility', 'hidden');
+				submitbutton.attr("disabled", "disabled");
+
+				function validatePassword(isValid) {
+					if (!isValid)
+						errorBox.css('visibility', 'visible');
+					else
+						errorBox.css('visibility', 'hidden');
+				}
+
+				function matchPassword(isMatched) {
+					if (isMatched) {
+						submitbutton.addClass('unlocked').removeClass('locked');
+						submitbutton.removeAttr("disabled", "disabled");
+					} else {
+						submitbutton.attr("disabled", "disabled");
+						submitbutton.addClass('locked').removeClass('unlocked');
+					}
+				}
 			});
 		</script>
 	</body
