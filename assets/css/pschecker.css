@@ -76,7 +76,8 @@
 }
 .password-container
 {
-/*	width: 600px; */
+	width: 600px; 
+	height: 400px;
 	padding: 4px;
 	position: relative;
 }
@@ -90,7 +91,7 @@
 {
 	text-align: right;
 	display: inline-block;
-	/*width: 130px;*/
+	width: 130px;
 	color: #6E6E6E;
 	font-size:14px;
 }
