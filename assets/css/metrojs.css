@@ -328,8 +328,9 @@ img.full , a.full
 }
 
 .light .appbar-buttons li a { color:#000; }
-.appbar-buttons a>img { background-image:url('images/metroIcons.jpg'); background-repeat:no-repeat; height:64px; width:64px; border:none;}
-.light .appbar-buttons a>img { background-image:url('images/metroIcons_light.jpg'); }
+/* changed path from images/ to ../img/ */
+.appbar-buttons a>img { background-image:url('../img/metroIcons.jpg'); background-repeat:no-repeat; height:64px; width:64px; border:none;}
+.light .appbar-buttons a>img { background-image:url('../img/metroIcons_light.jpg'); }
 .appbar-buttons a.home>img { background-position:-104px -12px; }
 .appbar-buttons a.about>img { background-position:-198px -99px;  }
 .appbar-buttons a.twitter>img { background-position:-198px -12px;  }
