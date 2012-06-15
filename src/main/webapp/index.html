@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>devdrive meets Twitter Bootstrap</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="inspired by devdrive tutorials and twitter bootstrap">
+		<meta name="author" content="Daniel Manzke">
+
+		<!-- Le styles -->
+		<link href="assets/css/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+			.subnav {
+			  width: 100%;
+			  height: 36px;
+			  background-color: #eeeeee; /* Old browsers */
+			  background-repeat: repeat-x; /* Repeat the gradient */
+			  background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
+			  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+			  background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+			  background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* IE10+ */
+			  background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Opera 11.10+ */
+			  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+			  background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
+			  border: 1px solid #e5e5e5;
+			  -webkit-border-radius: 4px;
+				 -moz-border-radius: 4px;
+					  border-radius: 4px;
+			}
+			.subnav .nav {
+			  margin-bottom: 0;
+			}
+			.subnav .nav > li > a {
+			  margin: 0;
+			  padding-top:    11px;
+			  padding-bottom: 11px;
+			  border-left: 1px solid #f5f5f5;
+			  border-right: 1px solid #e5e5e5;
+			  -webkit-border-radius: 0;
+				 -moz-border-radius: 0;
+					  border-radius: 0;
+			}
+			.subnav .nav > .active > a,
+			.subnav .nav > .active > a:hover {
+			  padding-left: 13px;
+			  color: #777;
+			  background-color: #e9e9e9;
+			  border-right-color: #ddd;
+			  border-left: 0;
+			  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+				 -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+					  box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+			}
+			.subnav .nav > .active > a .caret,
+			.subnav .nav > .active > a:hover .caret {
+			  border-top-color: #777;
+			}
+			.subnav .nav > li:first-child > a,
+			.subnav .nav > li:first-child > a:hover {
+			  border-left: 0;
+			  padding-left: 12px;
+			  -webkit-border-radius: 4px 0 0 4px;
+				 -moz-border-radius: 4px 0 0 4px;
+					  border-radius: 4px 0 0 4px;
+			}
+			.subnav .nav > li:last-child > a {
+			  border-right: 0;
+			}
+			.subnav .dropdown-menu {
+			  -webkit-border-radius: 0 0 4px 4px;
+				 -moz-border-radius: 0 0 4px 4px;
+					  border-radius: 0 0 4px 4px;
+			}
+
+			/* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
+			@media (min-width: 980px) {
+			  .subnav-fixed {
+				position: fixed;
+				top: 40px;
+				left: 0;
+				right: 0;
+				z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
+				border-color: #d5d5d5;
+				border-width: 0 0 1px; /* drop the border on the fixed edges */
+				-webkit-border-radius: 0;
+				   -moz-border-radius: 0;
+						border-radius: 0;
+				-webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+				   -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+						box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+			  }
+			  .subnav-fixed .nav {
+				width: 938px;
+				margin: 0 auto;
+				padding: 0 1px;
+			  }
+			  .subnav .nav > li:first-child > a,
+			  .subnav .nav > li:first-child > a:hover {
+				-webkit-border-radius: 0;
+				   -moz-border-radius: 0;
+						border-radius: 0;
+			  }
+			}
+		</style>
+		<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+		  <script src="assets/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<link rel="shortcut icon" href="assets/ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+	</head>
+	
+	<body data-spy="scroll" data-target=".subnav" data-offset="50">
+		<div class="navbar navbar-fixed-top" id="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="#">Project name</a>
+					<div class="btn-group pull-right">
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i> Username
+						<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="icon-cog"></i> Profile</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><i class="icon-off"></i> Sign Out</a></li>
+						</ul>
+					</div>
+					<form class="navbar-search pull-right"><!-- form-inline -->
+						<input class="search-query" id="searchbox" name="searchbox" type="text" placeholder="Search*" data-provide="typeahead">
+						<a href="#"><i class="icon-search icon-white"></i></a>
+					</form>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#uploadModal" data-toggle="modal">About</a></li>
+							<li><a href="#uploadModal" data-toggle="modal">Contact</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li class="nav-header">Nav header</li>
+									<li><a href="#">Separated link</a></li>
+									<li><a href="#">One more separated link</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>	
+		
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li class="nav-header">Sidebar</li>
+							<li class="active"><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li class="nav-header">Sidebar</li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li class="nav-header">Sidebar</li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+							<li><a href="#">Link</a></li>
+						</ul>
+					</div><!--/.well -->
+				</div><!--/span-->
+				<div class="span9">
+				<div class="modal hide fadein" id="uploadModal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h3>Modal header</h3>
+					</div>
+					<div class="modal-body">
+						<p>One fine body...</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Close</a>
+						<a href="#" class="btn btn-primary">Save changes</a>
+					</div>
+				</div>
+				<div class="alert alert-success">
+					Uploaded documents successfully!
+				</div>
+				<!--div class="subnav" id="subnav"-->
+					<ul class="breadcrumb" id="subnav">
+						<li>
+							<a href="#">Home</a> <span class="divider">/</span>
+						</li>
+						<li>
+							<a href="#">Library</a> <span class="divider">/</span>
+						</li>
+						<li class="active">Data</li>
+					</ul>
+				<!--/div-->
+				<table class="table table-striped table-bordered table-condensed">
+					<thead>
+						<tr>
+							<th>name</th>
+							<th>size</th>
+							<th>author</th>
+							<th>modified</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>2.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>3.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>4.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>5.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>6.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>7.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>8.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>9.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>10.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>11.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>12.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>13.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>14.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>15.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>16.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>17.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>18.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>19.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+						<tr>
+							<td>20.pdf</td>
+							<td>dam</td>
+							<td>31.89kb</td>
+							<td>14.06.2012</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pagination">
+					<ul>
+						<li><a href="#">Prev</a></li>
+						<li class="active">
+							<a href="#">1</a>
+						</li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">Next</a></li>
+					</ul>
+				</div>
+			</div><!--/row-->
+		</div><!--/span-->
+  </div><!--/row-->
+		
+		
+			<footer class="footer">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+			</footer>
+		</div>
+
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/bootstrap-transition.js"></script>
+		<script src="assets/js/bootstrap-alert.js"></script>
+		<script src="assets/js/bootstrap-modal.js"></script>
+		<script src="assets/js/bootstrap-dropdown.js"></script>
+		<script src="assets/js/bootstrap-scrollspy.js"></script>
+		<script src="assets/js/bootstrap-tab.js"></script>
+		<script src="assets/js/bootstrap-tooltip.js"></script>
+		<script src="assets/js/bootstrap-popover.js"></script>
+		<script src="assets/js/bootstrap-button.js"></script>
+		<script src="assets/js/bootstrap-collapse.js"></script>
+		<script src="assets/js/bootstrap-carousel.js"></script>
+		<script src="assets/js/bootstrap-typeahead.js"></script>
+		
+		<script type="text/javascript">
+            var words = ['saperion', 'sdb', 'iOS', 'Web Client', 'Synchronization', 'iPhone', 'iPad', 'Daniel Manzke', 'Daniel Kalwitzki', 'Thomas Stellmach'].sort();
+            $('#searchbox').typeahead({source: words});
+			
+			// fix sub nav on scroll
+			var $win = $(window)
+			  , $nav = $('#subnav')
+			  , navTop = $('#subnav').length && $('#subnav').offset().top - 40
+			  , isFixed = 0
+
+			processScroll()
+
+			// hack sad times - holdover until rewrite for 2.1
+			$nav.on('click', function () {
+			  if (!isFixed) setTimeout(function () {  $win.scrollTop($win.scrollTop() - 47) }, 10)
+			})
+
+			$win.on('scroll', processScroll)
+
+			function processScroll() {
+			  var i, scrollTop = $win.scrollTop()
+			  if (scrollTop >= navTop && !isFixed) {
+				isFixed = 1
+				$nav.addClass('subnav-fixed')
+			  } else if (scrollTop <= navTop && isFixed) {
+				isFixed = 0
+				$nav.removeClass('subnav-fixed')
+			  }
+			}
+		</script>
+	</body
+</html>

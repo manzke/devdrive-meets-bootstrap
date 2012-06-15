@@ -1,1 +1,8 @@
-target/
+target
+.settings
+.project
+.factorypath
+.classpath
+.jboss
+.mymetadata
+
