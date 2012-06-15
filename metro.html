@@ -382,15 +382,15 @@
 			   <nav>
 				  <ul id="menu" class="appbar-buttons">
 					  <li>
-						  <a href="#" class="home"><img src="/images/1pixel.gif" alt="home" /></a>
+						  <a href="#" class="home"><img src="/img/1pixel.gif" alt="home" /></a>
 						  <span class="charm-title">Home</span>
 					  </li>
 					  <li>
-						  <a href="#" class="about"><img src="/images/1pixel.gif" alt="about" /></a>
+						  <a href="#" class="about"><img src="/img/1pixel.gif" alt="about" /></a>
 						  <span class="charm-title">About</span>
 					  </li>
 					  <li>
-						  <a href="#" target="_blank" class="twitter"><img src="/images/1pixel.gif" alt="twitter" /></a>
+						  <a href="#" target="_blank" class="twitter"><img src="/img/1pixel.gif" alt="twitter" /></a>
 						  <span class="charm-title">Twitter</span>
 					  </li>
 				  </ul>
@@ -483,6 +483,15 @@
 				$nav.removeClass('subnav-fixed')
 			  }
 			}
+			
+			$(document).ready(function(){
+				$(".appbar").applicationBar({ 
+					preloadAltBaseTheme: true, 
+					bindKeyboard: true,
+					metroLightUrl: 'img/metroIcons_light.jpg',
+					metroDarkUrl: 'img/metroIcons.jpg'
+				}); 
+			});
 		</script>
 	</body
 </html>
