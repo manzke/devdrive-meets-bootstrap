@@ -6,6 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="inspired by devdrive tutorials and twitter bootstrap">
 		<meta name="author" content="Daniel Manzke">
+		<!-- enable full-screen mode -->
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<!-- controls the appearance of the status bar in full-screen mode -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
 		<!-- Le styles -->
 		<link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -442,6 +446,10 @@
 		<script src="assets/js/bootstrap-typeahead.js"></script>
 		
 		<script type="text/javascript">
+			window.addEventListener('load', function(e) {
+					setTimeout(function() { window.scrollTo(0, 1); }, 1);
+			}, false);
+		
             var words = ['saperion', 'sdb', 'iOS', 'Web Client', 'Synchronization', 'iPhone', 'iPad', 'Daniel Manzke', 'Daniel Kalwitzki', 'Thomas Stellmach'].sort();
             $('#searchbox').typeahead({source: words});
 			
